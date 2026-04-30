@@ -1,9 +1,13 @@
 import { Injectable } from '@nestjs/common';
+import { ScraperService } from 'src/scraper/scraper.service';
 import { StorageService } from 'src/scraper/storage.service';
 
 @Injectable()
 export class NewsService {
-  constructor(private readonly storage: StorageService) {}
+  constructor(
+    private readonly storage: StorageService,
+    private readonly scraper: ScraperService,
+  ) {}
 
   async getAllNews() {
     const data = await this.storage.read();
@@ -25,5 +29,11 @@ export class NewsService {
       count: Math.min(limit, sorted.length),
       data: sorted.slice(0, limit),
     };
+  }
+
+  async loadNews() {
+    const data = await this.scraper.scrapTodaysMarketNews();
+
+    return data;
   }
 }
