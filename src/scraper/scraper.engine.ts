@@ -34,6 +34,7 @@ export class ScraperEngine {
       });
 
       item.source = config.source;
+      item.logo = config.logo;
 
       if (item.title && item.link) {
         results.push(item);
