@@ -18,4 +18,7 @@ export class NewsDto {
 
   @ApiProperty({ example: 'nairametrics' })
   source: string;
+
+  @ApiProperty({ example: 'https://example.com/logo.png' })
+  logo?: string;
 }
