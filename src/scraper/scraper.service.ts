@@ -1,9 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import axios from 'axios';
-import * as cheerio from 'cheerio';
 import { StorageService } from './storage.service';
 import { NewsItem } from './types/news.type';
-import { normalizeNewsItem } from './utils/news-normalizer';
 import { ScraperEngine } from './scraper.engine';
 
 const url = 'https://nairametrics.com/category/market-news/';
@@ -29,6 +26,7 @@ export class ScraperService {
         category: '.jeg_thumb > .jeg_post_category span a',
       },
       source: 'Nairametrics',
+      logo: 'https://nairametrics.com/wp-content/uploads/2021/08/cropped-cropped-favicon-1.png?resize=300,300',
     });
 
     const todaysArticles = articles.filter((article) => {
@@ -60,6 +58,7 @@ export class ScraperService {
         category: '.jeg_thumb > .jeg_post_category span a',
       },
       source: 'Nairametrics',
+      logo: 'https://nairametrics.com/wp-content/uploads/2021/08/cropped-cropped-favicon-1.png?resize=300,300',
     });
 
     await this.storageService.save(articles);

@@ -11,4 +11,5 @@ export interface ScraperConfig {
   };
 
   source: string;
+  logo?: string;
 }

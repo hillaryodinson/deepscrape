@@ -26,6 +26,8 @@ export class ScraperEngine {
 
         if (key === 'link') {
           item[key] = element.attr('href') || null;
+        } else if (key === 'date') {
+          item[key] = new Date(element.text().trim()).toISOString() || null;
         } else {
           item[key] = element.text().trim() || null;
         }
@@ -38,6 +40,6 @@ export class ScraperEngine {
       }
     });
 
-    return results as T[];
+    return results.sort((a, b) => b.date - a.date) as T[];
   }
 }

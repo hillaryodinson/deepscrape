@@ -11,7 +11,7 @@ export class ScraperScheduler {
   }
 
   // ⏱ every 15 minutes
-  @Cron('0 */59 * * * *')
+  @Cron('0 */1 * * * *')
   async handleScraping() {
     this.logger.log('Running scheduled scraping...');
 
